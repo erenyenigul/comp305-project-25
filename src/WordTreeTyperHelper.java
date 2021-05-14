@@ -1,5 +1,6 @@
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WordTreeTyperHelper extends TyperHelperAlgorithm{
 
@@ -15,6 +16,6 @@ public class WordTreeTyperHelper extends TyperHelperAlgorithm{
         return tree.findSimilar(word, limOperations)
                    .stream()
                    .limit(maxNumCorrections)
-                   .toList();
+                   .collect(Collectors.toList());
     }
 }
