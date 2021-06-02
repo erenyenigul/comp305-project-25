@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -5,7 +7,10 @@ public class TyperHelper {
 
     TyperHelperAlgorithm algorithm;
 
+    private HashSet<String> dict;
+
     public TyperHelper(TyperAlgorithmType algorithmType, HashSet<String> dict){
+        this.dict = dict;
         switch (algorithmType){
             case BRUTE_FORCE:
                 algorithm = new BruteForceTyperHelper(dict);
@@ -17,6 +22,8 @@ public class TyperHelper {
     }
 
     public List<String> correct(String word, int operationLimit, int maxNumCorrections){
+        if(dict.contains(word))
+            return Arrays.asList(word);
         return algorithm.findCorrections(word, operationLimit, maxNumCorrections);
     }
 }

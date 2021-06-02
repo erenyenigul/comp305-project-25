@@ -1,16 +1,25 @@
+import javax.imageio.IIOException;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Main{
 
-    public static final int OPERATION_LIM = 2;
+    public static int OPERATION_LIM = 2;
     public static int N = 5;
     public static String D = "words.txt";
 
      public static void main(String []args){
-         HashSet<String> dict = Utils.getDictionary(D);
+         updateParameters(args);
+
+         HashSet<String> dict;
+         try{
+             dict = Utils.getDictionary(D);
+         }catch (IOException e){
+             System.out.println(e.getMessage());
+             return;
+         }
 
          Scanner sc = new Scanner(System.in);
          TyperAlgorithmType[] vals = TyperAlgorithmType.values();
@@ -30,6 +39,27 @@ public class Main{
 
              for(String correction: corrections){
                  System.out.println(correction);
+             }
+         }
+     }
+
+     public static void updateParameters(String[] args){
+         boolean d = false;
+         boolean n = false;
+
+         for(int i=0; i<args.length; i++){
+             if(args[i].equals("-d")){
+                 d=true;
+             }else if(args[i].equals("-n")){
+                 n=true;
+             }else if(d){
+                 D = args[i];
+                 d=false;
+             }else if(n){
+                 N = Integer.parseInt(args[i]);
+                 n=false;
+             }else{
+                 System.out.println("Unrecognized argument.");
              }
          }
      }
