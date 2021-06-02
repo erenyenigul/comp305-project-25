@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -20,6 +22,9 @@ public class TyperHelper {
     }
 
     public List<String> correct(String word, int operationLimit, int maxNumCorrections){
+        if(algorithm.dict.contains(word.toLowerCase())) {
+            return new ArrayList<String>(Arrays.asList(word));
+        }
         return algorithm.findCorrections(word, operationLimit, maxNumCorrections);
     }
 }
