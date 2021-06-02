@@ -4,6 +4,7 @@
 12 May 2021 - Think about a method for string distance calculation </br>
 15 May 2021 - Brute force and WordTree implementation </br>
 18 May 2021 - Combining solutions </br>
+1 June 2021 - Add memoization to WordTree implementation </br>
 2 June 2021 - Preparing presentation
 
 ## Group Members:
