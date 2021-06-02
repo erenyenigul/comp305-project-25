@@ -1,9 +1,10 @@
 # COMP305 Project Group 25
 
 ## To-Do
-12 April 2021 - Think about a method for string distance calculation </br>
-15 April 2021 - Brute force and WordTree implementation </br>
-18 April 2021 - Combining solutions
+12 May 2021 - Think about a method for string distance calculation </br>
+15 May 2021 - Brute force and WordTree implementation </br>
+18 May 2021 - Combining solutions
+2 June 2021 - Preparing presentation
 
 ## Group Members:
 Anıl Asım Bilen </br>
