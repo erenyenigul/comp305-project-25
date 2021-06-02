@@ -1,45 +1,20 @@
+import memoize.Memory;
+import memoize.WeightedItem;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class BruteForceTyperHelper extends TyperHelperAlgorithm{
-
-    private HashMap<String, ArrayList<WeightedItem>> memory = new HashMap<>();
-
-    private class WeightedItem implements Comparable<WeightedItem> {
-        public int weight;
-        public String searchWord;
-        public String result;
-        public WeightedItem(int weight, String searchWord, String result) {
-            this.weight = weight;
-            this.searchWord = searchWord;
-            this.result = result;
-        }
-
-
-        @Override
-        public int compareTo(WeightedItem o) {
-            return this.weight - o.weight;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.weight + this.searchWord.hashCode() + this.result.hashCode();
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            return this.hashCode() == obj.hashCode();
-        }
-    }
+public class BruteForceTyperHelper extends TyperHelperAlgorithm {
 
     public BruteForceTyperHelper(HashSet<String> dict) {
         super(dict);
     }
+    Memory<WeightedItem> memory = new Memory<>();
 
     @Override
     public List<String> findCorrections(String word, int operationLimit, int maxNumCorrections) {
-        if(memory.containsKey(word)) { // If we already calculated the given word
-            return memory.get(word).stream()
+        if(memory.containsWord(word)) { // If we already calculated the given word
+            return memory.retrieve(word).stream()
                     .filter(s -> s.weight <= operationLimit)
                     .limit(maxNumCorrections)
                     .map(s -> s.result).collect(Collectors.toList());
@@ -52,7 +27,7 @@ public class BruteForceTyperHelper extends TyperHelperAlgorithm{
         }
 
         Collections.sort(toMemorize);
-        this.memory.put(word, toMemorize);
+        this.memory.memoize(word, toMemorize);
         return this.findCorrections(word, operationLimit, maxNumCorrections);
     }
 }
