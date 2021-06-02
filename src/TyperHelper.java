@@ -13,6 +13,9 @@ public class TyperHelper {
             case WORD_TREE:
                 algorithm = new WordTreeTyperHelper(dict);
                 break;
+            case WORD_TREE_WITH_MEMO:
+                algorithm = new WordTreeWithMemoizeTyperHelper(dict);
+                break;
         }
     }
 

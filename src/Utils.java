@@ -44,7 +44,7 @@ public class Utils {
             Scanner f = new Scanner(stream);    //file to be scanned
 
             while (f.hasNextLine()) {
-                dict.add(f.nextLine());
+                dict.add(f.nextLine().toLowerCase());
             }
             f.close();
         } catch (IOException e) {
