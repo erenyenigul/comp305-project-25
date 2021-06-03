@@ -35,11 +35,11 @@ public class Utils {
         return cache[n][m];
     }
 
-    public static HashSet<String> getDictionary() {
+    public static HashSet<String> getDictionary() throws IOException {
         return getDictionary("words.txt");
     }
 
-    public static HashSet<String> getDictionary(String filename) {
+    public static HashSet<String> getDictionary(String filename) throws IOException{
         HashSet<String> dict = new HashSet<>();
         try {
             FileInputStream stream = new FileInputStream(filename);
@@ -50,7 +50,7 @@ public class Utils {
             }
             f.close();
         } catch (IOException e) {
-            e.printStackTrace();
+           throw new IOException("File not found.");
         }
 
         return dict;
