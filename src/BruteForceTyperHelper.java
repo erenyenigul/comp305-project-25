@@ -1,5 +1,6 @@
 import memoize.Memory;
 import memoize.WeightedItem;
+import utils.Utils;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -19,15 +20,15 @@ public class BruteForceTyperHelper extends TyperHelperAlgorithm {
                     .limit(maxNumCorrections)
                     .map(s -> s.result).collect(Collectors.toList());
         }
-        ArrayList<WeightedItem> toMemorize = new ArrayList<WeightedItem>();
+        ArrayList<WeightedItem> toMemoize = new ArrayList<WeightedItem>();
         for(String correct : this.dict) {
             int minOperations = Utils.strDistance(word, correct);
             WeightedItem toAdd = new WeightedItem(minOperations, word, correct);
-            toMemorize.add(toAdd);
+            toMemoize.add(toAdd);
         }
 
-        Collections.sort(toMemorize);
-        this.memory.memoize(word, toMemorize);
+        Collections.sort(toMemoize);
+        this.memory.memoize(word, toMemoize);
         return this.findCorrections(word, operationLimit, maxNumCorrections);
     }
 }
