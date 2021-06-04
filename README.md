@@ -52,7 +52,7 @@ livery <br>
 olivary <br>
 oliver <br>
 slivery <br>
-plovery <br><br><br>
+plovery <br><br>
 
 input: oliver <br>
 output: oliver<br>
