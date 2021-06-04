@@ -46,7 +46,7 @@ We first thought about the brute force implementation, where we iterate over the
 
 Test Cases: <br>
 
-input: olivery <br>
+1- input: olivery <br>
 output: <br>
 livery <br>
 olivary <br>
@@ -54,8 +54,10 @@ oliver <br>
 slivery <br>
 plovery <br>
 
-input: oliver <br>
+2- input: oliver <br>
 output: oliver<br>
+
+
 
 
 
