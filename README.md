@@ -35,7 +35,7 @@ n: searched word length<br>
 m: average word length in dictionary<br>
 z: dictionary size
 
-Word Tree Solution : O(n * m * log z) time , O(z) space<br>
+Word Tree Solution : O(n * m * log z + z * log z) time , O(z) space<br>
 where:<br>
 n: searched word length<br>
 m: average word length in dictionary<br>
